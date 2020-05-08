@@ -1,6 +1,8 @@
 package changdao.sys.controller;
 
 
+import changdao.sys.common.User;
+import changdao.utils.ResponseJson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,13 +17,18 @@ public class LoginController {
 
     @ResponseBody
     @RequestMapping( "/login" )
-    public Object login(String username,String password) {
+    public ResponseJson login(String username, String password) {
 
-        if ("test".equals(username) && "test".equals(password)){
-            return true;
+        User user = User.getUser(username);
+        if (null == user){
+            return new ResponseJson(false,"没有该用户");
         }
 
-        return false;
+        if (user.getPassword().equals(password)){
+            return new ResponseJson(false,"密码错误");
+        }
+        return new ResponseJson(true,"登陆成功");
+
     }
 
 
