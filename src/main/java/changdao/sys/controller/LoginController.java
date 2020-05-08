@@ -34,6 +34,22 @@ public class LoginController {
 
     }
 
+    /**
+     * 退出
+     * @param request
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping( "/logout" )
+    public ResponseJson logout(HttpServletRequest request) {
+
+        request.getSession().setAttribute("username",null);
+        return new ResponseJson(true,"退出成功");
+
+    }
+
+
+
 
 
 }
