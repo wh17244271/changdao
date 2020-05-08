@@ -12,7 +12,7 @@ spring:
     password: suypower123!
 
 mybatis:
-  mapper-locations: classpath*:zhny/mapper/*.xml
+  mapper-locations: classpath*:changdao/**/*.xml
   #配置模型路径
   type-aliases-package:
   configuration:
